@@ -38,8 +38,6 @@ public class ZeroSteps2 {
 
     public int prodDigits(int value) {
         int result = 1;
-        // Работаем с копией значения, чтобы не менять аргумент (хотя в Java передача по значению)
-        // Если число 0, цикл не выполнится и вернется 1 (согласно тестам 123->6, 1->1)
         while (value > 0) {
             result *= value % 10;
             value /= 10;
@@ -165,7 +163,6 @@ public class ZeroSteps2 {
         double centerY = length / 2;
 
         for (int i = 0; i < count; i++) {
-            // Генерируем случайную точку внутри квадрата
             double x = Math.random() * length;
             double y = Math.random() * length;
 
