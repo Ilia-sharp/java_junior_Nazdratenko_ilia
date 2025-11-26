@@ -48,7 +48,8 @@ public class ZeroSteps1 {
     }
 
     public long calculate15Degree(int number) {
-        long n = number; // Используем long, чтобы избежать переполнения при умножении
+        long n; // Используем long, чтобы избежать переполнения при умножении
+        n = number;
         long n2 = n * n;
         long n4 = n2 * n2;
         long n5 = n4 * n;
@@ -68,7 +69,7 @@ public class ZeroSteps1 {
         return Math.sqrt(Math.abs(number));
     }
 
-    // Треугольник существует если сумма любых 2х сторон больше 3
+    // Треугольник существует если сумма любых 2-х сторон больше 3
     public boolean isTriangleExist(int side1, int side2, int side3) {
         return (side1 + side2 > side3) &&
                 (side1 + side3 > side2) &&
