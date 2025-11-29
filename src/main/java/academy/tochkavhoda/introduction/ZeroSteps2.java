@@ -126,15 +126,16 @@ public class ZeroSteps2 {
     }
 
     public double calculateE() {
-        double e = 1.0; // Первое слагаемое (1)
-        double item = 1.0; // 1/1
-        int i = 1;
+        double e = 1.0;
+        double currentTerm = 1.0; // Текущий член ряда
+        int n = 1;
 
-        while (item >= 1E-6) {
-            item = item / i; // Вычисляем следующий член ряда
-            e += item;
-            i++;
+        while (currentTerm >= 1E-6) {
+            currentTerm = currentTerm / n;
+            e = e + currentTerm;
+            n++;
         }
+
         return e;
     }
 
