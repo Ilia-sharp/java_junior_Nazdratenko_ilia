@@ -66,8 +66,10 @@ public class ZeroSteps4 {
     }
 
     public boolean isSymmetric(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i + 1; j < matrix.length; j++) {
+        int n = matrix.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (matrix[i][j] != matrix[j][i]) {
                     return false;
                 }
@@ -167,51 +169,64 @@ public class ZeroSteps4 {
     public int[] toLinearByColumn(int[][] matrix) {
         int n = matrix.length;
         int[] result = new int[n * n];
-        int k = 0;
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i < n; i++) {
-                result[k++] = matrix[i][j];
+        int index = 0;
+
+        for (int column = 0; column < n; column++) {
+            for (int row = 0; row < n; row++) {
+                result[index] = matrix[row][column];
+                index++;
             }
         }
+
         return result;
     }
 
     public int[] toLinearByRowUpperTriangle(int[][] matrix) {
         int n = matrix.length;
-        int count = n * (n + 1) / 2;
-        int[] result = new int[count];
-        int k = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                result[k++] = matrix[i][j];
+        int totalElements = n * (n + 1) / 2;
+        int[] result = new int[totalElements];
+        int position = 0;
+
+        for (int row = 0; row < n; row++) {
+            for (int col = row; col < n; col++) {
+                result[position] = matrix[row][col];
+                position++;
             }
         }
+
         return result;
     }
 
     public int sumUntilNotFoundInRow(int[][] matrix, int barrier) {
-        int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] == barrier) {
+        int totalSum = 0;
+
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                if (matrix[row][col] == barrier) {
                     break;
                 }
-                sum += matrix[i][j];
+                totalSum = totalSum + matrix[row][col];
             }
         }
-        return sum;
+
+        return totalSum;
     }
 
     public int sumUntilNotFound(int[][] matrix, int barrier) {
-        int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] == barrier) {
-                    return sum;
+        int totalSum = 0;
+
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                int element = matrix[row][col];
+
+                if (element == barrier) {
+                    return totalSum;
                 }
-                sum += matrix[i][j];
+
+                totalSum = totalSum + element;
             }
         }
-        return sum;
+
+        return totalSum;
     }
 }

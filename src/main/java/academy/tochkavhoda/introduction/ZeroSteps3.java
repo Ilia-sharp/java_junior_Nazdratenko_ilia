@@ -169,23 +169,23 @@ public class ZeroSteps3 {
     }
 
     public int sumBetween2Zeros(int[] array) {
-        int firstZeroIndex = -1;
-        int secondZeroIndex = -1;
-
+        int firstZero = -1;
         for (int i = 0; i < array.length; i++) {
             if (array[i] == 0) {
-                if (firstZeroIndex == -1) {
-                    firstZeroIndex = i;
-                } else {
-                    secondZeroIndex = i;
-                    break;
-                }
+                firstZero = i;
+                break;
             }
         }
-
+        int secondZero = -1;
+        for (int i = firstZero + 1; i < array.length; i++) {
+            if (array[i] == 0) {
+                secondZero = i;
+                break;
+            }
+        }
         int sum = 0;
-        for (int i = firstZeroIndex + 1; i < secondZeroIndex; i++) {
-            sum += array[i];
+        for (int i = firstZero + 1; i < secondZero; i++) {
+            sum = sum + array[i];
         }
         return sum;
     }
@@ -220,10 +220,11 @@ public class ZeroSteps3 {
     }
 
     public void accumulatedSum(int[] array) {
-        int sum = 0;
+        int runningSum = 0;
+
         for (int i = 0; i < array.length; i++) {
-            sum += array[i];
-            array[i] = sum;
+            runningSum = runningSum + array[i];
+            array[i] = runningSum;
         }
     }
 
@@ -256,20 +257,30 @@ public class ZeroSteps3 {
     }
 
     public int insideCircle(int[] x, int[] y, int radius) {
-        int count = 0;
+        int pointsInside = 0;
+        int radiusSquared = radius * radius;
+
         for (int i = 0; i < x.length; i++) {
-            if (x[i] * x[i] + y[i] * y[i] <= radius * radius) {
-                count++;
+            int xSquared = x[i] * x[i];
+            int ySquared = y[i] * y[i];
+            int distanceSquared = xSquared + ySquared;
+
+            if (distanceSquared <= radiusSquared) {
+                pointsInside++;
             }
         }
-        return count;
+
+        return pointsInside;
     }
 
     public double scalarProduct(double[] array1, double[] array2) {
-        double sum = 0;
+        double result = 0;
+
         for (int i = 0; i < array1.length; i++) {
-            sum += array1[i] * array2[i];
+            double product = array1[i] * array2[i];
+            result = result + product;
         }
-        return sum;
+
+        return result;
     }
 }

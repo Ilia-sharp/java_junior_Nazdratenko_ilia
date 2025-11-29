@@ -30,8 +30,8 @@ public class ZeroSteps2 {
 
     public long factorial(int count) {
         long result = 1;
-        for (int i = 1; i <= count; i++) {
-            result *= i;
+        for (int i = 2; i <= count; i++) {
+            result = result * i;
         }
         return result;
     }
@@ -143,40 +143,39 @@ public class ZeroSteps2 {
         double sum = 0;
         double denominator = 1.0;
         int sign = 1;
-        double item;
-
-        // Цикл продолжается, пока модуль очередного члена >= 1E-8
-        do {
-            item = 1.0 / denominator;
-            sum += sign * item;
-            denominator += 2;
-            sign = -sign; // меняем знак: + - + -
-        } while (item >= 1E-8);
-
+        while (true) {
+            double currentTerm = 1.0 / denominator;
+            if (currentTerm < 1E-8) {
+                break;
+            }
+            sum = sum + sign * currentTerm;
+            denominator = denominator + 2;
+            sign = -sign;
+        }
         return 4 * sum;
     }
 
     public double calculateCircleSquare(double length, int count) {
-        int hits = 0;
-        double radius = length / 2;
-        // Центр квадрата и круга
-        double centerX = length / 2;
-        double centerY = length / 2;
+        int pointsInsideCircle = 0; // Сколько точек попало в круг
+
+        double radius = length / 2; // Радиус круга
+        double centerX = length / 2; // Центр по X
+        double centerY = length / 2; // Центр по Y
 
         for (int i = 0; i < count; i++) {
             double x = Math.random() * length;
             double y = Math.random() * length;
 
-            // Проверяем расстояние от точки до центра
-            double dx = x - centerX;
-            double dy = y - centerY;
+            double distanceX = x - centerX;
+            double distanceY = y - centerY;
+            double distanceSquared = distanceX * distanceX + distanceY * distanceY;
 
-            // Если расстояние меньше или равно радиусу, точка внутри круга
-            if (dx * dx + dy * dy <= radius * radius) {
-                hits++;
+            // Если точка внутри круга (расстояние <= радиус)
+            if (distanceSquared <= radius * radius) {
+                pointsInsideCircle++;
             }
         }
-
-        return length * length * hits / count;
+        double squareArea = length * length;
+        return squareArea * pointsInsideCircle / count;
     }
 }

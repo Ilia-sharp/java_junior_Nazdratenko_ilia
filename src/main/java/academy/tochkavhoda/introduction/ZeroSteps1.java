@@ -59,10 +59,13 @@ public class ZeroSteps1 {
     }
 
     public boolean isInsideRect(int xLeft, int yTop, int xRight, int yBottom, int x, int y) {
-        // Проверяем, попадает ли X в диапазон ширины и Y в диапазон высоты
-        boolean inX = (x >= xLeft) && (x <= xRight);
-        boolean inY = (y >= yTop) && (y <= yBottom);
-        return inX && inY;
+        if (x < xLeft || x > xRight) {
+            return false;
+        }
+        if (y < yTop || y > yBottom) {
+            return false;
+        }
+        return true;
     }
 
     public double sqrtAbs(int number) {
