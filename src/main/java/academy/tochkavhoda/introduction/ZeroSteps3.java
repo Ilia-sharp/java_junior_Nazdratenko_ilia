@@ -244,16 +244,12 @@ public class ZeroSteps3 {
             k++;
         }
 
-        while (i < array1.length) {
+        for (; i < array1.length; i++, k++) {
             result[k] = array1[i];
-            i++;
-            k++;
         }
 
-        while (j < array2.length) {
+        for (; j < array2.length; j++, k++) {
             result[k] = array2[j];
-            j++;
-            k++;
         }
 
         return result;
