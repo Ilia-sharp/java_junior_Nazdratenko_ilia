@@ -92,11 +92,15 @@ public class Rectangle {
         return isInside(point.getX(), point.getY());
     }
 
-    public boolean isIntersects(Rectangle rectangle) {
-        return !(rectangle.rightBottom.getX() < leftTop.getX() ||
-                rectangle.leftTop.getX() > rightBottom.getX() ||
-                rectangle.rightBottom.getY() < leftTop.getY() ||
-                rectangle.leftTop.getY() > rightBottom.getY());
+    public boolean isIntersects(Rectangle other) {
+        boolean intersectX =
+                rightBottom.getX() >= other.leftTop.getX() &&
+                        leftTop.getX() <= other.rightBottom.getX();
+        boolean intersectY =
+                rightBottom.getY() >= other.leftTop.getY() &&
+                        leftTop.getY() <= other.rightBottom.getY();
+
+        return intersectX && intersectY;
     }
 
     public boolean isInside(Rectangle rectangle) {
