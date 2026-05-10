@@ -1,4 +1,3 @@
-// test/academy/tochkavhoda/misc/v2/TestBook.java
 package academy.tochkavhoda.misc.v2;
 
 import org.junit.jupiter.api.Test;

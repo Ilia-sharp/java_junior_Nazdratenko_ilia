@@ -1,4 +1,3 @@
-// academy/tochkavhoda/iface/v2/Movable.java
 package academy.tochkavhoda.iface.v2;
 
 import academy.tochkavhoda.figures.v2.Point;

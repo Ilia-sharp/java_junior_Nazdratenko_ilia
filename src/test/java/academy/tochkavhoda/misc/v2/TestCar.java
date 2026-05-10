@@ -1,4 +1,3 @@
-// test/academy/tochkavhoda/misc/v2/TestCar.java
 package academy.tochkavhoda.misc.v2;
 
 import academy.tochkavhoda.figures.v2.Point;

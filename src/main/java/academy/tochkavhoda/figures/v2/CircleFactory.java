@@ -1,4 +1,3 @@
-// academy/tochkavhoda/figures/v2/CircleFactory.java
 package academy.tochkavhoda.figures.v2;
 
 public class CircleFactory {

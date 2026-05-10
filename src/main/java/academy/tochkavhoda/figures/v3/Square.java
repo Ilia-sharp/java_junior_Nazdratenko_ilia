@@ -1,5 +1,4 @@
-// academy/tochkavhoda/figures/v2/Square.java
-package academy.tochkavhoda.figures.v2;
+package academy.tochkavhoda.figures.v3;
 
 import java.util.Objects;
 
@@ -12,15 +11,12 @@ public class Square extends Rectangle {
     public Square(int side)               { this(new Point(0, -side), side); }
     public Square()                       { this(1); }
 
-    // при смене topLeft — сохраняем сторону
     @Override
     public void setTopLeft(Point topLeft) {
         int side = getLength();
         super.setTopLeft(topLeft);
         super.setBottomRight(new Point(topLeft.getX() + side, topLeft.getY() + side));
     }
-
-    // растягиваем одинаково по обеим осям
     @Override
     public void resize(double ratio) {
         int side = (int)(getLength() * ratio);

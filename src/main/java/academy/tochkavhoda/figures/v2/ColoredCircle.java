@@ -1,4 +1,3 @@
-// academy/tochkavhoda/figures/v2/ColoredCircle.java
 package academy.tochkavhoda.figures.v2;
 
 import academy.tochkavhoda.iface.v2.Colored;

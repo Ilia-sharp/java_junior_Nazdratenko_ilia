@@ -1,13 +1,12 @@
-// academy/tochkavhoda/figures/v2/Ellipse.java
-package academy.tochkavhoda.figures.v2;
+package academy.tochkavhoda.figures.v3;
 
-import academy.tochkavhoda.iface.v2.Stretchable;
+import academy.tochkavhoda.iface.v3.Stretchable;
 import java.util.Objects;
 
 public class Ellipse extends Figure implements Stretchable {
     private Point center;
-    private int xAxis; // полная ось X
-    private int yAxis; // полная ось Y
+    private int xAxis;
+    private int yAxis;
 
     public Ellipse(Point center, int xAxis, int yAxis) { this.center = center; this.xAxis = xAxis; this.yAxis = yAxis; }
     public Ellipse(int x, int y, int xAxis, int yAxis) { this(new Point(x, y), xAxis, yAxis); }
@@ -23,24 +22,18 @@ public class Ellipse extends Figure implements Stretchable {
 
     @Override public void moveTo(int x, int y)   { center.moveTo(x, y); }
     @Override public void moveRel(int dx, int dy) { center.moveRel(dx, dy); }
-
     @Override public void resize(double ratio) {
-        xAxis = (int)(xAxis * ratio);
-        yAxis = (int)(yAxis * ratio);
+        xAxis = (int)(xAxis * ratio); yAxis = (int)(yAxis * ratio);
     }
     @Override public void stretch(double xRatio, double yRatio) {
-        xAxis = (int)(xAxis * xRatio);
-        yAxis = (int)(yAxis * yRatio);
+        xAxis = (int)(xAxis * xRatio); yAxis = (int)(yAxis * yRatio);
     }
 
-    @Override public double getArea() {
-        return Math.PI * (xAxis / 2.0) * (yAxis / 2.0);
-    }
+    @Override public double getArea() { return Math.PI * (xAxis / 2.0) * (yAxis / 2.0); }
     @Override public double getPerimeter() {
         double a = xAxis / 2.0, b = yAxis / 2.0;
         return 2 * Math.PI * Math.sqrt((a * a + b * b) / 2);
     }
-
     @Override public boolean isInside(int x, int y) {
         double a = xAxis / 2.0, b = yAxis / 2.0;
         double dx = x - center.getX(), dy = y - center.getY();

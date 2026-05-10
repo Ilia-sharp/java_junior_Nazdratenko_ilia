@@ -1,4 +1,3 @@
-// academy/tochkavhoda/figures/v2/Circle.java
 package academy.tochkavhoda.figures.v2;
 
 import java.util.Objects;

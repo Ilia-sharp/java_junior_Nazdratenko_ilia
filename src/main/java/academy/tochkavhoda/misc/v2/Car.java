@@ -1,4 +1,3 @@
-// academy/tochkavhoda/misc/v2/Car.java
 package academy.tochkavhoda.misc.v2;
 
 import academy.tochkavhoda.iface.v2.Colored;
